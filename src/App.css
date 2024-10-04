@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+  --terminal-bg: #000000;
+  --terminal-text: #00ff00;
+  --terminal-border: #00ff00;
+  --terminal-glow: #00ff0033;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'VT323', monospace;
+  background-color: var(--terminal-bg);
+  color: var(--terminal-text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.terminal-app {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.terminal-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.terminal-title {
+  font-size: 3.5rem;
+  margin: 0;
+  text-shadow: 0 0 5px var(--terminal-glow);
+}
+
+.terminal-main {
+  flex-grow: 1;
+}
+
+.terminal-footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1rem;
+}
+
+.terminal-container {
+  border: 2px solid var(--terminal-text);
+  padding: 20px;
+  box-shadow: 0 0 10px var(--terminal-glow);
+}
+
+.terminal-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.terminal-block {
+  border: 1px solid var(--terminal-text);
+  padding: 15px;
+  text-align: center;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  box-shadow: 0 0 5px var(--terminal-glow);
 }
 
-.App-link {
-  color: #61dafb;
+.terminal-text {
+  margin: 5px 0;
+  font-size: calc(1vw + 1vh + 0.5vmin);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.terminal-title-2 {
+  font-size: calc(1vw + 1vh + 0.5vmin);
+  margin-bottom: 1rem;
+  text-align: center;
+  text-shadow: 0 0 5px var(--terminal-glow);
+}
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
   to {
-    transform: rotate(360deg);
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .terminal-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
